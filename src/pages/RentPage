@@ -1,0 +1,102 @@
+// src/pages/RentPage.js
+import React, { useState } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+const RentPage = () => {
+  const [rentalDetails, setRentalDetails] = useState({
+    make: '',
+    model: '',
+    dailyPrice: '',
+    availabilityStart: '',
+    availabilityEnd: '',
+    description: ''
+  });
+
+  const handleChange = (e) => {
+    setRentalDetails({
+      ...rentalDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Rental Details:', rentalDetails);
+    // Add logic to send the form data to the backend API
+  };
+
+  return (
+    <div>
+      <Header />
+      <main className="container">
+        <h2>Rent Out Your Car</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Make:</label>
+            <input
+              type="text"
+              name="make"
+              value={rentalDetails.make}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Model:</label>
+            <input
+              type="text"
+              name="model"
+              value={rentalDetails.model}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Daily Rental Price:</label>
+            <input
+              type="number"
+              name="dailyPrice"
+              value={rentalDetails.dailyPrice}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Availability Start Date:</label>
+            <input
+              type="date"
+              name="availabilityStart"
+              value={rentalDetails.availabilityStart}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Availability End Date:</label>
+            <input
+              type="date"
+              name="availabilityEnd"
+              value={rentalDetails.availabilityEnd}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Description:</label>
+            <textarea
+              name="description"
+              value={rentalDetails.description}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default RentPage;
