@@ -52,8 +52,8 @@ body{
 a,a:hover,a:active,a:focus {
 	display:inline-block;
 	text-decoration:none;
-	color: hsl(223, 25%, 89%);
-	font-size:20px;
+	color: hsl(223, 92%, 53%);
+	font-size:14px;
 	padding:0;
     font-weight: 500;
     text-transform: capitalize;
@@ -129,6 +129,11 @@ html,body{height: 100%;}
 /*-------------------------------------
         2. Top-area
 --------------------------------------*/
+
+.logo img {
+    height: 130px; /* Adjust the height of the logo as needed */
+}
+
 nav.navbar.bootsnav {
     background-color: transparent;
     border-bottom: transparent;
@@ -154,7 +159,7 @@ nav.navbar.bootsnav {
 /*.nav li*/
 nav.navbar.bootsnav ul.nav > li > a {
     color: #f5f7fa;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     text-transform:uppercase;
     -webkit-transition: 0.3s linear; 
@@ -206,7 +211,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 --------------------------------------*/
 .welcome-hero {
     position: relative;
-    background:url(../images/welcome-hero/welcome-banner.jpg)no-repeat;
+    background:url(../images/welcome-hero/1.jpg)no-repeat;
     background-position: center;
     background-size: cover;
     z-index: 1;
@@ -223,7 +228,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 .header-area{position: absolute;top:0;left:0;width: 100%;z-index: 99;}
 
 /*.welcome-hero-txt*/
-.welcome-hero-txt{text-align: center;padding:290px 0 372px;}
+.welcome-hero-txt{text-align: center;padding:100px 0 172px;}
 .welcome-hero-txt h2 {
     font-size: 42px;
     color: #fff;
@@ -257,6 +262,16 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     background: #0102fa;
 }
 /*.welcome-hero-txt*/
+
+/* Full page styling */
+.welcome-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  
 
 /*-------------------------------------
         4. Model-Search
@@ -747,6 +762,95 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+/*=================Registration New======================*/
+/* Fullscreen layout */
+.registration-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Blurred background image */
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:url(../images/welcome-hero/3.jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px); /* Blur effect */
+    z-index: -1; /* Ensure the image is behind the form */
+    opacity: 0.7; /* Slight opacity for a soft look */
+  }
+  
+  /* Registration form container */
+  .registration-form {
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for modern look */
+    z-index: 1;
+    margin-right: 50px; /* Space from the right edge */
+  }
+  
+  /* Form title */
+  .registration-form h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Input field styling */
+  .registration-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  /* Input field focus effect */
+  .registration-form input:focus {
+    border-color: #4CAF50; /* Green border on focus */
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 128, 0, 0.4);
+  }
+  
+  /* Button styling */
+  .registration-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .registration-form button:hover {
+    background-color: #45a049; /* Slightly darker on hover */
+  }
+  
+  /* Label styling */
+  .registration-form label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+
 /*=================Registration======================*/
 .user-container {
     background-color: white;
@@ -858,9 +962,18 @@ input[type="submit"]:hover {
   /* Grid layout for the search form */
   .search-form {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  /* Two columns */
+    grid-gap: 20px; /* Space between grid items */
+    width: 100%;
+  }
+
+  /* Grid layout for the search form */
+  .search-form-2 {
+    display: grid;
     grid-template-columns: 1fr 1fr;  /* Two columns */
     grid-gap: 20px; /* Space between grid items */
     width: 100%;
+    padding-top: 20px;
   }
   
   /* Each form item takes one cell in the grid */
@@ -900,3 +1013,42 @@ input[type="submit"]:hover {
   button:hover {
     background-color: #45a049;
   }
+
+  /* Notification container */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadein 0.5s, fadeout 0.5s 2.5s; /* Fade in/out effect */
+  }
+  
+  /* Fade in animation */
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(20px); /* Slide up */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Fade out animation */
+  @keyframes fadeout {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(20px); /* Slide down */
+    }
+  }
+  

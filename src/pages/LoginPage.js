@@ -34,9 +34,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div class="container">
-			<div class="row">
-        <div class="user-container">
+    <div className="registration-page">
+    {/* Blurred background image */}
+    <div className="background-image"></div>
+      <div className="registration-form">
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
 
@@ -52,12 +53,11 @@ const LoginPage = () => {
               {error && <p>{error}</p>}
               <div class="form-group">
                   <input type="submit" value="Login"/>
-                  <Link to="/register">Register</Link>
+                  Don't have an account ? <Link to="/register">Register</Link>
               </div>
           </form>
         </div>
       </div>
-    </div>
     
   );
 };

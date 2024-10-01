@@ -2,14 +2,30 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Notification from '../components/Notification';
 import config from '../config'; // Import the base URL
+import { fuelType } from '../components/data,js';
 
 const SellPage = () => {
 
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [notification, setNotification] = useState(null); // State to control notification
+  const [responseMessage, setResponseMessage] = useState('');
+
+  // Function to trigger notification
+  const showNotification = () => {
+    setNotification({
+      message: responseMessage,
+      duration: 3000, // 3 seconds
+    });
+  };
+
+  // Function to close notification
+  const closeNotification = () => {
+    setNotification(null); // Hide notification
+  };
 
   // State to store filters
   const [filters, setFilters] = useState({
@@ -65,7 +81,7 @@ const SellPage = () => {
       setLoading(false); // Stop loading once data is fetched
     } catch (error) {
       console.log("fetchCarData error:"+error);
-      setError(error.message); // Capture any errors
+      setResponseMessage(error.message); // Capture any errors
       setLoading(false);        // Stop loading on error
     }
   };
@@ -78,7 +94,7 @@ const SellPage = () => {
   const [cars, setCars] = useState([]);         // State to hold car data
   const [images, setImages] = useState([]);
   const [documents, setDocuments] = useState([]);
-  const [responseMessage, setResponseMessage] = useState('');
+  
   // Initial state for carDetails
   const initialCarDetails = {
     make: '',
@@ -198,7 +214,7 @@ const SellPage = () => {
   const generateYearOptions = () => {
     const currentYear = new Date().getFullYear();
     const years = [];
-    for (let year = 1980; year <= currentYear; year++) {
+    for (let year = 1990; year <= currentYear; year++) {
       years.push(year);
     }
     return years;
@@ -248,17 +264,7 @@ const SellPage = () => {
   return (
     <div>
       <main>
-        <section id="home" class="welcome-hero">
-          <div class="top-area">
-            <div class="header-area">
-                <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
-                  <Header />
-                </nav>
-            </div>
-          </div>
-        </section>
-        
-
+        <Header />
         {/* Content Section Start*/}
         <section id="new-cars" class="new-cars">
 
@@ -271,7 +277,7 @@ const SellPage = () => {
 
             <div class="row col-md-8">
               <a href='#' onClick={toggleSections}>
-                {showSectionA ? 'Add Car Details(Sell)' : 'Filter Car Details(Sell)'}
+                {showSectionA ? 'Add Car' : 'Search Car'}
               </a>
             </div>
             <div class="clearfix"></div>
@@ -406,7 +412,8 @@ const SellPage = () => {
             <div class="row">
               <div class="col-md-10">
                 <div className="search-container">
-                  <form className="search-form" onSubmit={handleSubmit}>
+                  <form  onSubmit={handleSubmit}>
+                    <div className="search-form">
                       <div className="form-item">
                           <label>Make:</label>
                           <select value={carDetails.make} name="make" onChange={handleInputChange} required>
@@ -474,6 +481,8 @@ const SellPage = () => {
                             <option value="Automatic">Automatic</option>
                           </select>
                       </div>
+                    </div>
+                    <div className="search-form-2">
                       <div className="form-item">
                           <label>Car Images (up to 10 JPG files):</label>
                           <input type="file" id="carImages" name="carImages" accept=".jpg,.jpeg" multiple onChange={handleImageChange}/>
@@ -517,12 +526,22 @@ const SellPage = () => {
                           <textarea rows="4" name="description" value={carDetails.description} onChange={handleInputChange} required/>
                       </div>
                       <div className="form-item" onClick={handleSubmit}>
-                        <button type="submit">Submit</button>
+                        <button type="submit">Add Car</button>
                       </div>
-                      <div className="form-item">
+                      {/* <div className="form-item">
                         <button type="reset">Reset</button>
-                      </div>
-                      {responseMessage && <p>Response: {responseMessage}</p>}
+                      </div> */}
+                    </div>  
+
+                    {/* Show notification if it exists */}
+                    {notification && (
+                      <Notification
+                        message={notification.message}
+                        duration={notification.duration}
+                        onClose={closeNotification}
+                      />
+                    )}
+                    {responseMessage && <p> {responseMessage}</p>}
                   </form>
                 </div>
               </div>

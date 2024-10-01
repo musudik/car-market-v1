@@ -34,48 +34,74 @@ const RegisterPage = () => {
   };
 
   return (
-    <main>
-      <section>
-        <div class="user-container">
+
+    <div className="registration-page">
+    {/* Blurred background image */}
+    <div className="background-image"></div>
+
+    {/* Registration form */}
+        <div className="registration-form">
+          <h2>Create Your Account</h2>
+          <form onSubmit={handleRegister}>
+            <label>First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)} 
+              placeholder="Enter your first name"
+              required
+            />
+
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder="Enter your last name"
+              required
+            />
+
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+            />
+
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Create a password"
+              required
+            />
+
+            <label>Mobile</label>
+            <input
+              type="tel"
+              name="mobile"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)} 
+              placeholder="Enter your mobile number"
+              required
+            />
+
+            {error && <p>{error}</p>}
+              <div class="form-group">
+                  <input type="submit" value="Register"/>
+                  Already registered? <Link to="/login">Login</Link>
+              </div>
+          </form>
           
-            <h2>User Registration</h2>
-
-            <form onSubmit={handleRegister}>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required/>
-                    <div class="helper-text">Password must be at least 8 characters long.</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Enter your first name" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Enter your last name" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="mobile">Mobile</label>
-                    <input type="tel" id="mobile" name="mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} placeholder="Enter your mobile number" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="Register"/>
-                </div>
-
-                <Link to="/login">Login</Link>
-            </form>
         </div>
-      </section>
-    </main>
+      </div>
   );
 };
 

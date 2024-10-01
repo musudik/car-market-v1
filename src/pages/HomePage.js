@@ -42,31 +42,26 @@ const HomePage = () => {
   return (
     <body>
       <main>
-        <section id="home" class="welcome-hero">
-          <div class="top-area">
-            <div class="header-area">
-              <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
-                <Header />
-              </nav>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-
-          <div class="container">
-            <div class="welcome-hero-txt">
-              <h2>Buy, Sell and Rent your desired cars.</h2>
-              <p>
-                The perfect market place for all your car needs.
-              </p>
-            </div>
-          </div>
-        </section>
-
+        <Header />
         <section id="featured-cars" class="featured-cars">
           <div class="container">
             <div class="section-header">
-              <h2>featured cars</h2>
+              <h2>Welcome to The Car Market</h2>
             </div>
+            <div className="welcome-page">
+              <div className="content-container">
+                <p>
+                  <strong>The Car Market</strong> is a comprehensive online platform designed to simplify the buying, selling, and renting of cars. Whether you’re a car owner looking to sell your vehicle or a buyer searching for your next ride, The Car Market provides an easy-to-use interface for seamless transactions. 
+                </p>
+                <p>
+                  With powerful filtering options based on make, model, gear type, fuel type, and price range, users can effortlessly browse and find the perfect car that meets their needs. Sellers benefit from detailed listing options, allowing them to upload car details, images, and documents to attract potential buyers. 
+                </p>
+                <p>
+                  Additionally, the platform supports car rentals, catering to those seeking short-term vehicle solutions. Built with a modern, responsive design, The Car Market is equipped with secure user authentication, ensuring safe and reliable transactions for all users. Whether buying, selling, or renting, The Car Market offers a streamlined, user-friendly experience for all.
+                </p>
+              </div>
+            </div>
+            
 
             <section id="error-loading">
               {/* Handle Loading State */}
