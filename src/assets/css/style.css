@@ -390,7 +390,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 --------------------------------------*/
 .new-cars{
     background: #f8f9fb;
-    padding:112px 0 120px;
+    padding:10px 0 120px;
 }
 .new-cars-content{padding-top:96px;}
 /*.new-cars-txt*/
@@ -955,14 +955,13 @@ input[type="submit"]:hover {
 .search-container {
     width: 100%;
     margin: 0 auto;
-    padding: 20px;
     box-sizing: border-box;
   }
   
   /* Grid layout for the search form */
   .search-form {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;  /* Two columns */
+    grid-template-columns: 1fr 1fr 1fr 1fr;  /* Two columns */
     grid-gap: 20px; /* Space between grid items */
     width: 100%;
   }
@@ -1051,4 +1050,41 @@ input[type="submit"]:hover {
       transform: translateY(20px); /* Slide down */
     }
   }
+  /* sub-nav for sell car */
+  .sub-nav {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
   
+  .sub-nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .sub-nav li {
+    display: inline;
+  }
+  
+  .sub-nav a {
+    text-decoration: none;
+    color: #0979f0;
+    font-weight: bold;
+    font-size: 20px;
+
+  }
+  
+  .sub-nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .side-heading {
+    font-size: 20px;
+    font-weight: lighter;
+    margin-top: 20px;
+  }
+
+  .button-search {
+    margin-top: 34px;
+  }

@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Notification from '../components/Notification';
 import config from '../config'; // Import the base URL
-import { fuelType } from '../components/data,js';
+import { carModels, fuelType } from '../components/data.js';
 
 const SellPage = () => {
 
@@ -173,30 +173,6 @@ const SellPage = () => {
     setDocuments(documents);
   };
 
-  // Define car models based on the car make
-  const carModels = {
-    Audi: ['A3', 'A4', 'Q5', 'A6', 'A8'],
-    BMW: ['X1', 'X3', 'X5', '3 Series', '5 Series'],
-    Chevrolet: ['Spark', 'Malibu', 'Camaro', 'Silverado', 'Corvette'],
-    Dacia: ['Logan', 'Duster', 'Sandero', 'Dokker', 'Lodgy'],
-    Fiat: ['500', 'Panda', 'Tipo', 'Ducato', '500X'],
-    Ford: ['Fiesta', 'Focus', 'Mustang', 'EcoSport', 'Explorer'],
-    Honda: ['Civic', 'Accord', 'CR-V', 'HR-V', 'Pilot'],
-    Hyundai: ['i10', 'i20', 'Kona', 'Tucson', 'Santa Fe'],
-    Kia: ['Rio', 'Seltos', 'Sportage', 'Sorento', 'Optima'],
-    Mercedes: ['C-Class', 'E-Class', 'GLA', 'GLE', 'S-Class'],
-    MINI: ['Cooper', 'Countryman', 'Clubman', 'Paceman', 'Roadster'],
-    Mitsubishi: ['Mirage', 'Outlander', 'Pajero', 'Lancer', 'Eclipse Cross'],
-    Nissan: ['Micra', 'Qashqai', 'Juke', 'X-Trail', 'Leaf'],
-    Peugeot: ['208', '3008', '308', '2008', '5008'],
-    Porsche: ['Cayenne', 'Macan', 'Panamera', '911', 'Taycan'],
-    SEAT: ['Ibiza', 'Leon', 'Arona', 'Ateca', 'Tarraco'],
-    Skoda: ['Fabia', 'Octavia', 'Superb', 'Kodiaq', 'Kamiq'],
-    Suzuki: ['Swift', 'Vitara', 'Baleno', 'Ignis', 'Celerio'],
-    Tesla: ['Model S', 'Model 3', 'Model X', 'Model Y', 'Roadster'],
-    Toyota: ['Corolla', 'Camry', 'Yaris', 'Prius', 'RAV4'],
-  };
-
   // Handle the input change event
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -273,19 +249,22 @@ const SellPage = () => {
             <div class="section-header">
               <h2>Sell Cars</h2>
             </div>
-            <div class="clearfix"></div>
+          
 
-            <div class="row col-md-8">
-              <a href='#' onClick={toggleSections}>
+            <nav class="sub-nav">
+              <ul>
+                <li>
+                  <a href='#' onClick={toggleSections}>
                 {showSectionA ? 'Add Car' : 'Search Car'}
-              </a>
-            </div>
-            <div class="clearfix"></div>
+                </a>
+                </li>
+              </ul>
+            </nav>
+            
             {/* Filter Section Start*/}
             {showSectionA && (
             <div class="row">
-              <div class="col-md-10">
-                <h1>Car Search (Sell)</h1>
+              <div className='side-heading'>Search Car</div>
                 {/* Filter Form */}
                   <div className="search-container">
                     <form className="search-form" onSubmit={handleSubmit}>
@@ -360,21 +339,16 @@ const SellPage = () => {
                           placeholder="Enter max kilometers"
                         />
                       </div>
-                      
-                      {/* Search Button */}
-                      <div className="form-item" onClick={fetchCarData}>
-                        <button type="submit">Search</button>
-                      </div>
-
-                      <div className="form-item" onClick={handleAddNew}>
-                        <button type="submit">Add Car</button>
+                      <div className="form-item">
+                        <button className='button-search' type="submit" onClick={fetchCarData}>Search</button>
                       </div>
                     </form>
+                    {/* Search Button */}
                   </div>
 
                   {/* Search Results */}
                   <div>
-                    <h2>Search Results</h2>
+                    <div className='side-heading'>Search Results</div>
                     {searchResults.length === 0 ? (
                       <p>No results found.</p>
                     ) : (
@@ -401,16 +375,14 @@ const SellPage = () => {
                           </div>
                         ))}
                       </div>
-                
                     )}
                   </div>
-                </div>
             </div>
             )}
             {/* Add Car Sell Details Start*/}
             {!showSectionA && (
             <div class="row">
-              <div class="col-md-10">
+              <div>
                 <div className="search-container">
                   <form  onSubmit={handleSubmit}>
                     <div className="search-form">
@@ -481,6 +453,14 @@ const SellPage = () => {
                             <option value="Automatic">Automatic</option>
                           </select>
                       </div>
+                      <div className="form-item">
+                          <label>Price:</label>
+                          <input type="number" name="openPrice" value={carDetails.openPrice} onChange={handleInputChange} required/>
+                      </div>
+                      <div className="form-item">
+                          <label>Description:</label>
+                          <textarea rows="2" name="description" value={carDetails.description} onChange={handleInputChange} required/>
+                      </div>
                     </div>
                     <div className="search-form-2">
                       <div className="form-item">
@@ -517,20 +497,9 @@ const SellPage = () => {
                             </div>
                           )}
                       </div>
-                      <div className="form-item">
-                          <label>Price:</label>
-                          <input type="number" name="openPrice" value={carDetails.openPrice} onChange={handleInputChange} required/>
-                      </div>
-                      <div className="form-item">
-                          <label>Description:</label>
-                          <textarea rows="4" name="description" value={carDetails.description} onChange={handleInputChange} required/>
-                      </div>
                       <div className="form-item" onClick={handleSubmit}>
                         <button type="submit">Add Car</button>
                       </div>
-                      {/* <div className="form-item">
-                        <button type="reset">Reset</button>
-                      </div> */}
                     </div>  
 
                     {/* Show notification if it exists */}

@@ -33,19 +33,18 @@
   };
 
   // Types of Car Fuels
-  export const fuelType = {
-    Petrol,
-    Diesel,
-    Hybrid,
-    Electric,
-  };
+  // export const fuelType = [
+  //   Petrol,
+  //   Diesel,
+  //   Hybrid,
+  //   Electric,
+  // ];
 
-  // Types of Car Gears
-  export const gearType = {
-    Manual,
-    Automatic,
-  };
-
+  // // Types of Car Gears
+  // export const gearType = [
+  //   Manual,
+  //   Automatic,
+  // ];
 
   export const kilometresDriven = {
     "0 Km - 10,000 Km": "0 Km - 10,000 Km",
@@ -61,14 +60,14 @@
   };
 
   // State to store filters
-  export const [filters, setFilters] = useState({
+  export const initFilters = {
     make: '',
     model: '',
     gearType: '',
     fuelType: '',
     price: '',
     kilometers: ''
-  });
+  };
 
   // Initial state for carDetails
   export const initialCarDetails = {
@@ -83,10 +82,8 @@
     openPrice: '',
     description: '',
     firstRegisteredDate: '',
-    status: 'SELL',
-    user: {
-      id: user.id,
-    },
-    carSellImages: images,
-    carSellDocuments: documents,
+    status: '',
+    user: null,
+    carSellImages: [],
+    carSellDocuments: [],
   };
